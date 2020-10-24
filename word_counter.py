@@ -4,7 +4,6 @@ import operator
 from collections import Counter 
   
 def start(url): 
-  
     # empty list to store the contents of  
     # the website fetched from our web-crawler 
     wordlist = [] 
@@ -28,7 +27,6 @@ def start(url):
   
 # Function removes any unwanted symbols 
 def clean_wordlist(wordlist): 
-      
     clean_list =[] 
 
     # Check for unwanted symbols and remove
@@ -67,7 +65,23 @@ def create_dictionary(clean_list):
     top = c.most_common(5) 
 
     return top
-  
-# Driver code 
-# if __name__ == '__main__': 
-#     start("https://bmccpa.com") 
+
+# Counts all words in the body of a URL and gets the top 5 uncommon words
+def wordCoutingMagic(serpURLs, SERPData): 
+    totalWordList = ['Word Count']
+    topKeywordsList = ['Top 5 Words']
+
+    for url in serpURLs:
+        totalWords = start(url)
+        clean_list = clean_wordlist(totalWords)
+        topKeywords = create_dictionary(clean_list)
+        totalWordList.append(len(totalWords))
+        topKeywordsList.append(topKeywords)
+
+    i = 0
+    for row in SERPData:
+        row.append(totalWordList[i])
+        row.append(topKeywordsList[i])
+        i+=1
+    
+    return SERPData
