@@ -25,24 +25,39 @@ def speedTest(serpURLs, SERPData):
 
 
 def pagespeedInsights(serpURLs):
-    for i in serpURLs:
+    i = 0
+    for s in serpURLs:
         # Call PSI API and save JSON 
-        PSIRes = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=" + i + "&key=" + PSI_API_Key
+        PSIRes = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=" + s + "&key=" + PSI_API_Key
         response = requests.get(PSIRes)
         speedRes = response.json()
+        print(i)
+        print(len(serpURLs))
+        print(s)
+        print(serpURLs[i])
         # Append speed data to arrays
         speedIndex.append(speedRes['lighthouseResult']['audits']['speed-index']['displayValue'])
         largestPaint.append(speedRes['lighthouseResult']['audits']['largest-contentful-paint']['displayValue'])
         cumalativeLayoutShift.append(speedRes['lighthouseResult']['audits']['cumulative-layout-shift']['displayValue'])
         totalBlocking.append(speedRes['lighthouseResult']['audits']['total-blocking-time']['displayValue'])
+        i+=1
 
 def appendSpeedData(SERPData):
     i = 0
+    print(speedIndex)
+    print(len(speedIndex))
+    print(SERPData)
+    print(i)
     for row in SERPData:
         row.append(speedIndex[i])
         row.append(largestPaint[i])
         row.append(cumalativeLayoutShift[i])
         row.append(totalBlocking[i])
         i+=1
+    # Clear the arrays for the next loop
+    speedIndex.clear()
+    largestPaint.clear()
+    cumalativeLayoutShift.clear()
+    totalBlocking.clear()
     return SERPData
 

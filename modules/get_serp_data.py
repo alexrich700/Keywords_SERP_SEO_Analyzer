@@ -15,4 +15,5 @@ def getCSV(newest):
             # Save the CSV to an array
             with open(newest_file, newline='') as csvfile:
                 SERPData = list(csv.reader(csvfile))
+
     return SERPData

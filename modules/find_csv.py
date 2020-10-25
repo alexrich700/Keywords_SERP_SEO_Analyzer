@@ -16,12 +16,16 @@ def get_URLs(SERPData):
 
     return serpURLs
 
-
 # Check if the latest file is finished downloading
 def latest_download_file():
     # Path to downloads file relative to this script
-    path = r'../../Downloads'
-    os.chdir(path)
+    owd = os.getcwd()
+    projectDirectory = r'C:\Users\alexr\Documents\Projects'
+    # Check if the current working dir is the project's if not, change to downloads folder
+    if owd == projectDirectory:
+        path = r'../../Downloads'
+        os.chdir(path)
+
     files = sorted(os.listdir(os.getcwd()), key=os.path.getmtime)
     newest = files[-1]
 
@@ -33,7 +37,6 @@ def save_File(newest):
     while "crdownload" == fileends:
         time.sleep(1)
         newest_file = latest_download_file()
-        print(newest_file)
         if "crdownload" in newest_file:
             fileends = "crdownload"
         else:

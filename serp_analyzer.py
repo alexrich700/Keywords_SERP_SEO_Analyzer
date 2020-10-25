@@ -12,7 +12,7 @@ from modules import writeCSV
 from modules import speed_test
 
 # Add search query
-searchQuery = "contract analysis systems"
+searchQueries = ["printers for sale victoria tx", "copiers for sale victoria tx"]
 
 # Add path to download file relative to this script
 pathToDownloadFile = r'../../Downloads'
@@ -27,9 +27,10 @@ chrome_options.add_extension(ahrefExtension)
 PATH = "C:\Program Files (x86)\chromedriver.exe"
 driver = webdriver.Chrome(PATH, options=chrome_options)
 
-try:
-    # AHREF Login
-    login_ahref.loginAhref(driver)
+# AHREF Login
+login_ahref.loginAhref(driver)
+
+for searchQuery in searchQueries:
 
     # Google Search Stuff 
     google_search.googleSearch(driver, searchQuery)
@@ -46,13 +47,13 @@ try:
     SERPData = speed_test.speedTest(serpURLs, SERPData)
 
     # Word Counting Magic 
-    SERPData = word_counter.wordCoutingMagic(serpURLs, SERPData)
+    # SERPData = word_counter.wordCoutingMagic(serpURLs, SERPData)
 
     # Write to CSV 
     writeCSV.write(SERPData, searchQuery)
 
-except Exception as ex:
-    print(ex)
+    # Clear the arrays for the next loop
+    SERPData.clear()
+    serpURLs.clear()
 
-finally:
-    driver.quit()
+driver.quit()
