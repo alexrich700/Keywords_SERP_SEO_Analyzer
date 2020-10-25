@@ -47,7 +47,7 @@ for searchQuery in searchQueries:
     SERPData = speed_test.speedTest(serpURLs, SERPData)
 
     # Word Counting Magic 
-    # SERPData = word_counter.wordCoutingMagic(serpURLs, SERPData)
+    SERPData = word_counter.wordCoutingMagic(serpURLs, SERPData)
 
     # Write to CSV 
     writeCSV.write(SERPData, searchQuery)

@@ -83,5 +83,9 @@ def wordCoutingMagic(serpURLs, SERPData):
         row.append(totalWordList[i])
         row.append(topKeywordsList[i])
         i+=1
+
+    # Clear the arrays for the next loop
+    totalWordList.clear()
+    topKeywordsList.clear()
     
     return SERPData

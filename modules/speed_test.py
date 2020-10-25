@@ -35,7 +35,6 @@ def pagespeedInsights(serpURLs):
         PSIRes = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=" + s + "&key=" + PSI_API_Key
         response = requests.get(PSIRes)
         speedRes = response.json()
-        print(s)
         # Append speed data to arrays
         speedIndex.append(speedRes['lighthouseResult']['audits']['speed-index']['displayValue'])
         largestPaint.append(speedRes['lighthouseResult']['audits']['largest-contentful-paint']['displayValue'])
@@ -44,12 +43,6 @@ def pagespeedInsights(serpURLs):
 
 def appendSpeedData(SERPData):
     i = 0
-    print(speedIndex)
-    print(len(speedIndex))
-    print(speedIndex[0])
-    print(speedIndex[1])
-    print(SERPData)
-    print(i)
     for r in SERPData:
         print(r)
         r.append(speedIndex[i])
