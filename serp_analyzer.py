@@ -2,14 +2,14 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 # Import modules
-import login_ahref
-import google_search
-import get_ahref_csv
-import find_csv
-import get_serp_data
-import word_counter
-import writeCSV
-import speed_test
+from modules import login_ahref
+from modules import google_search
+from modules import get_ahref_csv
+from modules import find_csv
+from modules import get_serp_data
+from modules import word_counter
+from modules import writeCSV
+from modules import speed_test
 
 # Add search query
 searchQuery = "contract analysis systems"
