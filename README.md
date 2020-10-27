@@ -7,7 +7,7 @@ Get the Page's URL Rating, Backlinks, Referring Domains, Search Traffic, Organic
 
 #### Todo
 - [x] Organize code into modules
-- [ ] Allow multiple search queries 
+- [x] Allow multiple search queries 
 - [ ] Get data of comparing domain
 - [ ] Make predictions on how long it will take to rank based on backlinks created per month
 - [ ] Add NLP Categories
