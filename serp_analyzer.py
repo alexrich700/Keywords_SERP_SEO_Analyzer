@@ -12,7 +12,7 @@ from modules import writeCSV
 from modules import speed_test
 
 # Add search query
-searchQueries = ["printers for sale victoria tx", "copiers for sale victoria tx"]
+searchQueries = ["sterile compounding"]
 
 # Add path to download file relative to this script
 pathToDownloadFile = r'../../Downloads'
@@ -40,6 +40,7 @@ for searchQuery in searchQueries:
 
     # CSV Stuff 
     newest = find_csv.latest_download_file()
+    print(newest)
     SERPData = get_serp_data.getCSV(newest)
     serpURLs = find_csv.get_URLs(SERPData)
 

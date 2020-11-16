@@ -20,7 +20,7 @@ def get_URLs(SERPData):
 def latest_download_file():
     # Path to downloads file relative to this script
     owd = os.getcwd()
-    projectDirectory = r'C:\Users\alexr\Documents\Projects'
+    projectDirectory = r'C:\Users\alexr\Documents\SERP Analyzer'
     # Check if the current working dir is the project's if not, change to downloads folder
     if owd == projectDirectory:
         path = r'../../Downloads'

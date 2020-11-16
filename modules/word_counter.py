@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup 
 import operator 
 from collections import Counter 
+import time
   
 def start(url): 
     # empty list to store the contents of  
@@ -72,6 +73,7 @@ def wordCoutingMagic(serpURLs, SERPData):
     topKeywordsList = ['Top 5 Words']
 
     for url in serpURLs:
+        time.sleep(1)
         totalWords = start(url)
         clean_list = clean_wordlist(totalWords)
         topKeywords = create_dictionary(clean_list)
@@ -80,6 +82,7 @@ def wordCoutingMagic(serpURLs, SERPData):
 
     i = 0
     for row in SERPData:
+        time.sleep(1)
         row.append(totalWordList[i])
         row.append(topKeywordsList[i])
         i+=1
